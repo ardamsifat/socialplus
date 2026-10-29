@@ -1,0 +1,6 @@
+{
+  "name": "SocialPulse (MINDCRAFTED REALITIES)",
+  "description": "Autonomous AI agent for cross-platform social media publishing, real-time engagement analytics, and multilingual auto-reply with Bangla priority.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
