@@ -309,10 +309,16 @@ app.get('/api/health', (req, res) => {
 
 // Mount Vite middleware in development or serve static in production
 async function startServer() {
+  const http = await import('http');
+  const httpServer = http.createServer(app);
+
   if (process.env.NODE_ENV !== 'production') {
     const { createServer: createViteServer } = await import('vite');
     const vite = await createViteServer({
-      server: { middlewareMode: true },
+      server: {
+        middlewareMode: true,
+        hmr: false,
+      },
       appType: 'spa',
     });
     app.use(vite.middlewares);
@@ -323,7 +329,7 @@ async function startServer() {
     });
   }
 
-  app.listen(PORT, '0.0.0.0', () => {
+  httpServer.listen(PORT, '0.0.0.0', () => {
     console.log(`[SocialPulse] Server running on http://0.0.0.0:${PORT}`);
   });
 }
